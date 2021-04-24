@@ -1,10 +1,15 @@
-name: Auto Purging
-on: push
+name: Action Test
+
+on:
+  push:
+  schedule:
+    - cron: '0 0 * * 0'
 
 jobs:
-  deploy:
+  Action_Test:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
 
     # Put steps here to build your site, check, and deploy your site.
 
