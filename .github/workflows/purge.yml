@@ -1,0 +1,22 @@
+name: Auto Purging
+on: push
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+    # Put steps here to build your site, check, and deploy your site.
+
+    - name: Clear Cloudflare cache
+      uses: Cyb3r-Jak3/clear-cloudflare-cache@0.0.1
+      env:
+        # Zone is required by both methods
+        zone: ${{ secrets.CLOUDFLARE_ZONE }}
+
+        # Using API Token
+        api_token: ${{ secrets.CLOUDFLARE_TOKEN }}
+
+        # Using Global Token
+        email: ${{ secrets.CLOUDFLARE_EMAIL }}
+        global_token: ${{ secrets.CLOUDFLARE_KEY }}
